@@ -1,0 +1,23 @@
+name: Ask a question
+description: A question about using the app, or a suggestion.
+title: "[Question]: "
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues here are **public**, so please don't include personal information.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question or suggestion
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - iPhone
+        - Android
+        - Both / not specific

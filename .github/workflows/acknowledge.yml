@@ -1,0 +1,28 @@
+name: Acknowledge new issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  reply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const isBug = context.payload.issue.labels.some(l => l.name === 'bug')
+            const body = [
+              `Thanks for getting in touch about Visual Product Search, @${context.payload.issue.user.login}.`,
+              '',
+              isBug
+                ? "We've logged this problem and someone from Infinite Red will look into it. If we need more detail, we'll ask here."
+                : "We've received your question and someone from Infinite Red will reply here.",
+              '',
+              'In the meantime, the [support page](https://infinitered.github.io/react-native-vector-search/support/) covers how the app works. For anything private, email hello@infinite.red.',
+            ].join('\n')
+            await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number, body })

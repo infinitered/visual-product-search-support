@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Email Infinite Red
+    url: mailto:hello@infinite.red
+    about: For anything you'd rather not post publicly.
+  - name: Support page
+    url: https://infinitered.github.io/react-native-vector-search/support/
+    about: How to use the app, and answers to common questions.
